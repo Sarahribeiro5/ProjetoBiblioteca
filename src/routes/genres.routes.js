@@ -1,11 +1,11 @@
 import express from "express";
 
-import booksController from "../controllers/books.controller.js";
+import genresController from "../controllers/genres.controller.js";
 
-const booksRouter = express.Router();
+const genresRouter = express.Router();
 
 // Rota para obter todos os livros
-booksRouter.get("/", booksController.getAllBooks);
-booksRouter.post("/", booksController.createBook);
+genresRouter.get("/", genresController.getAllGenres);
+genresRouter.post("/", genresController.createGenre);
 
-export default booksRouter;
+export default genresRouter;
