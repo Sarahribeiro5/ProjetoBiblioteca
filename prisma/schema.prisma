@@ -25,3 +25,15 @@ model Book {
 
   @@map("books")
 }
+
+model Genre {
+  id String @id @default(cuid())
+  name String
+  numberBooks Int
+  popularityRanking Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("genres") 
+}
