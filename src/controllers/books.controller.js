@@ -21,7 +21,7 @@ class BooksController {
       if (
         !title ||
         !author ||
-        !pulishedAt 
+        !publishedAt 
       ) {
         return res
           .status(400)
