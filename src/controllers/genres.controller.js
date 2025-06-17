@@ -1,50 +1,50 @@
-import BooksModel from "../models/books.model.js";
+import GenresModel from "../models/genres.model.js";
 
-class BooksController {
-    async getAllBooks(req, res) {
+class GenresController {
+    async getAllGenres(req, res) {
         try {
-            const books = await BooksModel.findAll();
-            res.status(200).json(books);
+            const genres = await GenresModel.findAll();
+            res.status(200).json(genres);
         } catch (error) {
-            console.error("Erro no controller de livros:", error);
-            res.status(500).json({ error: "Erro ao buscar livros" });
+            console.error("Erro no controller de gêneros:", error);
+            res.status(500).json({ error: "Erro ao buscar gêneros" });
         }
     }
-    async createBook(req, res) {
+    async createGenre(req, res) {
     try {
       const {
-        title,
-        author,
-        publishedAt 
+        name,
+        numberBooks,
+        popularityRanking 
       } = req.body;
 
       if (
-        !title ||
-        !author ||
-        !pulishedAt 
+        !name ||
+        !numberBooks ||
+        !popularityRanking 
       ) {
         return res
           .status(400)
-          .json({ error: "Os campos de Título, Autor e Data de Publicação são obrigatórios" });
+          .json({ error: "Os campos de Nome, Número de Livros e Ranking de Popularidade são obrigatórios" });
       }
 
-      const newBook = await BooksModel.create(
-        title,
-        author,
-        publishedAt 
+      const newGenre = await GenresModel.create(
+        name,
+        numberBooks,
+        popularityRanking 
       );
 
-      if (!newBook) {
-        return res.status(400).json({ error: "Erro ao criar livro" });
+      if (!newGenre) {
+        return res.status(400).json({ error: "Erro ao criar gênero" });
       }
 
-      res.status(201).json(newBook);
+      res.status(201).json(newGenre);
     } catch (error) {
-      console.error("Erro ao criar livro:", error);
-      res.status(500).json({ error: "Erro ao criar livro" });
+      console.error("Erro ao criar gênero:", error);
+      res.status(500).json({ error: "Erro ao criar gênero" });
     }
   }
 
 }
 
-export default new BooksController();
+export default new GenresController();
