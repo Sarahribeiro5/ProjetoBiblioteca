@@ -6,6 +6,15 @@ class BooksModel {
 
         return books;
     }
+
+    async create(data) {
+        const book = await prisma.book.create({
+            data,
+        });
+
+        return book;
+    }
+
 }
 
 export default new BooksModel ();
